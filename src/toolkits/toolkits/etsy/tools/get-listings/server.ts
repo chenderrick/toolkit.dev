@@ -10,7 +10,7 @@ export const getListingsServerConfig = (
   typeof getListings.outputSchema.shape
 > => {
   return {
-    callback: async () => {
+    callback: async ({ limit = 25, offset = 0, sort_on = "created", sort_order = "desc", keywords = undefined }) => {
       try {
         const user = await etsy.User.getMe();
 
@@ -24,9 +24,16 @@ export const getListingsServerConfig = (
 
         if (!shopId) throw new Error("Missing Etsy shop ID");
 
-        const listings = await etsy.ShopListing.getFeaturedListingsByShop({
-          shopId,
-        });
+        const listings = await etsy.ShopListing.findAllActiveListingsByShop(
+          {
+            shopId: shopId,
+            limit: limit,
+            offset: offset,
+            sort_on: sort_on,
+            sort_order: sort_order,
+            keywords: keywords
+          }
+        );
 
         if (!listings.data.results) throw new Error("Missing Etsy listings");
 
