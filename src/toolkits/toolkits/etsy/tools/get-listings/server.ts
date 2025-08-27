@@ -24,14 +24,16 @@ export const getListingsServerConfig = (
 
         if (!shopId) throw new Error("Missing Etsy shop ID");
 
-        const listings = await etsy.ShopListing.findAllActiveListingsByShop(
+        console.log(shop);
+        console.log(user);
+
+        const listings = await etsy.ShopListing.getListingsByShop(
           {
             shopId: shopId,
-            limit: limit,
-            offset: offset,
-            sort_on: sort_on,
-            sort_order: sort_order,
-            keywords: keywords
+            // limit: limit,
+            // offset: offset,
+            // sort_on: sort_on,
+            // sort_order: sort_order,
           }
         );
 
