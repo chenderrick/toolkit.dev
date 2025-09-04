@@ -14,6 +14,7 @@ export const baseEtsyToolkitConfig: ToolkitConfig<
 > = {
   tools: {
     [EtsyTools.getListings]: getListings,
+    [EtsyTools.createDraftListing]: createDraftListing,
   },
   parameters: etsyParameters,
 };

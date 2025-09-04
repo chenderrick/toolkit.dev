@@ -1,4 +1,4 @@
-import type { Etsy } from "etsy-ts";
+import type { Etsy, IGetListingsByShopParams } from "etsy-ts";
 
 import type { ServerToolConfig } from "@/toolkits/types";
 import type { getListings } from "./base";
@@ -24,16 +24,16 @@ export const getListingsServerConfig = (
 
         if (!shopId) throw new Error("Missing Etsy shop ID");
 
-        const listings = await etsy.ShopListing.getListingsByShop(
-          {
-            shopId: shopId,
-            limit: limit,
-            offset: offset,
-            sort_on: sort_on,
-            sort_order: sort_order,
-            includes: includes,
-          }
-        );
+        const params: IGetListingsByShopParams = {
+          shopId,
+          ...(limit !== undefined ? { limit } : {}),
+          ...(offset !== undefined ? { offset } : {}),
+          ...(sort_on !== undefined ? { sort_on } : {}),
+          ...(sort_order !== undefined ? { sort_order } : {}),
+          ...(includes !== undefined ? { includes } : {}),
+        };
+
+        const listings = await etsy.ShopListing.getListingsByShop(params);
 
         if (!listings.data.results) throw new Error("Missing Etsy listings");
 

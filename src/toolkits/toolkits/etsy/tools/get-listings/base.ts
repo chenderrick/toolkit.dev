@@ -6,11 +6,11 @@ export const getListings = createBaseTool({
   description:
     "Fetches all listings from the Etsy shop associated with the authenticated user." +
     "No additional input is required. But there are optional ones:" +
-    "limit — page size (default 25; max typically 100)" +
+    "limit — page size (default 25; max 100)" +
     "offset — number of results to skip (use for pagination)" +
     "sort_on — field to sort by (e.g., created, updated, price, score). Note: some sorts only work when combined with a search option; score is always descending regardless of sort_order." +
     "sort_order — up (ascending) or down (descending), when supported by the chosen sort_on." +
-    "keywords - Search term or phrase that must appear in all results.",
+    "includes - An enumerated string that attaches a valid association. Acceptable inputs are 'Shipping', 'Shop', 'Images', 'User', 'Translations' and 'Inventory'.",
   inputSchema: z.object({
     limit: z
       .number()
