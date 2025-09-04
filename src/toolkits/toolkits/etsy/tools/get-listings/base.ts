@@ -37,12 +37,11 @@ export const getListings = createBaseTool({
       .min(0)
       .optional()
       .describe("Number of results to skip (use for pagination). Default: 0"),
-    keywords: z
-      .string()
+    includes: z
+      .enum(["Shipping", "Images", "Shop", "User", "Translations", "Inventory", "Videos"])
+      .array()
       .optional()
-      .describe(
-        "Search term or phrase that must appear in all results. Default: null"
-      ),
+      .describe("An enumerated string that attaches a valid association. Acceptable inputs are 'Shipping', 'Shop', 'Images', 'User', 'Translations' and 'Inventory'.")
   }),
   outputSchema: z.object({
     results: z.array(z.custom<IShopListing>()),
