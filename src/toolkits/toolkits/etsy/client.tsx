@@ -19,7 +19,8 @@ export const etsyClientToolkit = createClientToolkit(
   baseEtsyToolkitConfig,
   {
     name: "Etsy Toolkit",
-    description: "Etsy toolkit for Listing management, Payment management, Receipt management, Shipping management, Shop management and more!",
+    description:
+      "Etsy toolkit for Listing management, Payment management, Receipt management, Shipping management, Shop management and more!",
     icon: SiEtsy,
     form: null,
     type: ToolkitGroups.DataSource,

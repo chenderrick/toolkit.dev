@@ -15,7 +15,7 @@ export const createDraftListing = createBaseTool({
     "processing_max - The maximum number of days it takes to produce the item." +
     "readiness_state_id - The numeric ID of the processing profile associated with the listing. Required when type is physical." +
     "tags - A comma-separated list of tag strings for the listing. When creating or updating a listing, valid tag strings contain only letters, numbers, whitespace characters, -, ', ™, ©, and ®. (regex: /[^\\p{L}\\p{Nd}\\p{Zs}-'™©®]/u)." +
-    "styles - An array of style strings for this listing, each of which is free-form text string such as \"Formal\", or \"Steampunk\". When creating or updating a listing, the listing may have up to two styles. Valid style strings contain only letters, numbers, and whitespace characters. (regex: /[^\\p{L}\\p{Nd}\\p{Zs}]/u)." +
+    'styles - An array of style strings for this listing, each of which is free-form text string such as "Formal", or "Steampunk". When creating or updating a listing, the listing may have up to two styles. Valid style strings contain only letters, numbers, and whitespace characters. (regex: /[^\\p{L}\\p{Nd}\\p{Zs}]/u).' +
     "item_weight - The numeric weight of the product measured in units set in 'item_weight_unit'. If set, the values must be greater than 0." +
     "item_length - The numeric length of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0." +
     "item_width - The numeric width of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0." +
@@ -37,7 +37,9 @@ export const createDraftListing = createBaseTool({
       .string()
       .min(1)
       .max(140)
-      .describe("The title of the listing. Can only contain letters, numbers, punctuation marks, mathematical symbols, whitespace characters"),
+      .describe(
+        "The title of the listing. Can only contain letters, numbers, punctuation marks, mathematical symbols, whitespace characters",
+      ),
     description: z
       .string()
       .min(1)
@@ -47,12 +49,14 @@ export const createDraftListing = createBaseTool({
       .number()
       .positive()
       .describe(
-        "The price of the item. Must be a positive value with up to two decimal places."
+        "The price of the item. Must be a positive value with up to two decimal places.",
       ),
     quantity: z
       .number()
       .min(1)
-      .describe("The quantity of items available in this listing. Must be at least 1."),
+      .describe(
+        "The quantity of items available in this listing. Must be at least 1.",
+      ),
     who_made: z
       .enum(["i_did", "collective", "someone_else"])
       .describe("Who made the item."),
@@ -78,7 +82,9 @@ export const createDraftListing = createBaseTool({
         "1700s",
         "before_1700",
       ])
-      .describe("An enumerated string for the era in which the maker made the product in this listing. Helps buyers locate the listing under the Vintage heading."),
+      .describe(
+        "An enumerated string for the era in which the maker made the product in this listing. Helps buyers locate the listing under the Vintage heading.",
+      ),
     taxonomy_id: z
       .number()
       .int()
@@ -86,14 +92,16 @@ export const createDraftListing = createBaseTool({
       .describe("The taxonomy ID for the category of the listing."),
     is_supply: z
       .boolean()
-      .describe("When true, tags the listing as a supply product, else indicates that it's a finished product."),
+      .describe(
+        "When true, tags the listing as a supply product, else indicates that it's a finished product.",
+      ),
     shipping_profile_id: z
       .number()
       .int()
       .positive()
       .optional()
       .describe(
-        "ID of the shipping profile to associate with the listing. REQUIRED if listing type is physical."
+        "ID of the shipping profile to associate with the listing. REQUIRED if listing type is physical.",
       ),
     return_policy_id: z
       .number()
@@ -112,8 +120,8 @@ export const createDraftListing = createBaseTool({
           .min(1)
           .max(25)
           .describe(
-            "A material string for materials used in the product. Valid materials strings contain only letters, numbers, and whitespace characters."
-          )
+            "A material string for materials used in the product. Valid materials strings contain only letters, numbers, and whitespace characters.",
+          ),
       )
       .max(25),
     shop_section_id: z
@@ -140,7 +148,7 @@ export const createDraftListing = createBaseTool({
       .positive()
       .optional()
       .describe(
-        "The numeric ID of the processing profile associated with the listing. Required when type is physical."
+        "The numeric ID of the processing profile associated with the listing. Required when type is physical.",
       ),
     tags: z
       .array(
@@ -153,8 +161,8 @@ export const createDraftListing = createBaseTool({
           .min(1)
           .max(25)
           .describe(
-            "A tag string for the listing. When creating or updating a listing, valid tag strings contain only letters, numbers, whitespace characters, -, ', ™, ©, and ®."
-          )
+            "A tag string for the listing. When creating or updating a listing, valid tag strings contain only letters, numbers, whitespace characters, -, ', ™, ©, and ®.",
+          ),
       )
       .max(13)
       .describe("A list of tag strings for the listing."),
@@ -169,8 +177,8 @@ export const createDraftListing = createBaseTool({
           .min(1)
           .max(25)
           .describe(
-            "A style string for this listing, such as \"Formal\", or \"Steampunk\". When creating or updating a listing, the listing may have up to two styles. Valid style strings contain only letters, numbers, and whitespace characters."
-          )
+            'A style string for this listing, such as "Formal", or "Steampunk". When creating or updating a listing, the listing may have up to two styles. Valid style strings contain only letters, numbers, and whitespace characters.',
+          ),
       )
       .max(2)
       .describe("An array of style strings for this listing."),
@@ -178,30 +186,42 @@ export const createDraftListing = createBaseTool({
       .number()
       .positive()
       .optional()
-      .describe("The numeric weight of the product measured in units set in 'item_weight_unit'. If set, the values must be greater than 0."),
+      .describe(
+        "The numeric weight of the product measured in units set in 'item_weight_unit'. If set, the values must be greater than 0.",
+      ),
     item_length: z
       .number()
       .positive()
       .optional()
-      .describe("The numeric length of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0."),
+      .describe(
+        "The numeric length of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0.",
+      ),
     item_width: z
       .number()
       .positive()
       .optional()
-      .describe("The numeric width of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0."),
+      .describe(
+        "The numeric width of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0.",
+      ),
     item_height: z
       .number()
       .positive()
       .optional()
-      .describe("The numeric height of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0."),
+      .describe(
+        "The numeric height of the product measured in units set in 'item_dimensions_unit'. If set, the values must be greater than 0.",
+      ),
     item_weight_unit: z
       .enum(["g", "kg", "oz", "lb"])
       .optional()
-      .describe("The unit of measurement for the weight of the product. Valid values are 'g' (grams), 'kg' (kilograms), 'oz' (ounces), and 'lb' (pounds). Required if 'item_weight' is provided."),
+      .describe(
+        "The unit of measurement for the weight of the product. Valid values are 'g' (grams), 'kg' (kilograms), 'oz' (ounces), and 'lb' (pounds). Required if 'item_weight' is provided.",
+      ),
     item_dimensions_unit: z
       .enum(["mm", "cm", "m", "in", "ft"])
       .optional()
-      .describe("The unit of measurement for the dimensions of the product. Valid values are 'mm' (millimeters), 'cm' (centimeters), 'm' (meters), 'in' (inches), and 'ft' (feet). Required if any of 'item_length', 'item_width', or 'item_height' is provided."),
+      .describe(
+        "The unit of measurement for the dimensions of the product. Valid values are 'mm' (millimeters), 'cm' (centimeters), 'm' (meters), 'in' (inches), and 'ft' (feet). Required if any of 'item_length', 'item_width', or 'item_height' is provided.",
+      ),
     is_personalizable: z
       .boolean()
       .optional()
@@ -209,26 +229,32 @@ export const createDraftListing = createBaseTool({
     personalization_is_required: z
       .boolean()
       .optional()
-      .describe("When true, indicates that personalization is required for the listing. Will only change if _is_personalizable is true"),
+      .describe(
+        "When true, indicates that personalization is required for the listing. Will only change if _is_personalizable is true",
+      ),
     personalization_char_count_max: z
       .number()
       .int()
       .min(1)
       .max(250)
       .optional()
-      .describe("The maximum number of characters allowed for personalization. Will only change if _is_personalizable is true."),
+      .describe(
+        "The maximum number of characters allowed for personalization. Will only change if _is_personalizable is true.",
+      ),
     personalization_instructions: z
       .string()
       .max(500)
       .optional()
-      .describe("Instructions for personalization. Will only change if _is_personalizable is true."),
+      .describe(
+        "Instructions for personalization. Will only change if _is_personalizable is true.",
+      ),
     production_partner_ids: z
       .array(
         z
           .number()
           .int()
           .positive()
-          .describe("A unique ID of a production partner.")
+          .describe("A unique ID of a production partner."),
       )
       .optional()
       .describe("An array of unique IDs of production partner ids."),
@@ -238,15 +264,19 @@ export const createDraftListing = createBaseTool({
           .number()
           .int()
           .positive()
-          .describe("A numeric image ID of an image in a listing.")
+          .describe("A numeric image ID of an image in a listing."),
       )
       .max(10)
       .optional()
-      .describe("An array of numeric image IDs of the images in a listing, which can include up to 10 images."),
+      .describe(
+        "An array of numeric image IDs of the images in a listing, which can include up to 10 images.",
+      ),
     is_customizable: z
       .boolean()
       .optional()
-      .describe("When true, a buyer may contact the seller for a customized order. The default value is true when a shop accepts custom orders. Does not apply to shops that do not accept custom orders."),
+      .describe(
+        "When true, a buyer may contact the seller for a customized order. The default value is true when a shop accepts custom orders. Does not apply to shops that do not accept custom orders.",
+      ),
     should_auto_renew: z
       .boolean()
       .optional()
@@ -254,10 +284,14 @@ export const createDraftListing = createBaseTool({
     is_taxable: z
       .boolean()
       .optional()
-      .describe("When true, applicable shop tax rates apply to this listing at checkout"),
+      .describe(
+        "When true, applicable shop tax rates apply to this listing at checkout",
+      ),
     type: z
       .enum(["physical", "download", "both"])
-      .describe("An enumerated type string that indicates whether the listing is physical or a digital download or both."),
+      .describe(
+        "An enumerated type string that indicates whether the listing is physical or a digital download or both.",
+      ),
   }),
   outputSchema: z.object({
     result: z.custom<IShopListing>(),

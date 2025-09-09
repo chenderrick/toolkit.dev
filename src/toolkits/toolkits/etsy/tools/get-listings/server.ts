@@ -5,13 +5,13 @@ import type { getListings } from "./base";
 
 export const getListingsServerConfig = (
   etsy: Etsy,
-  userId: string
+  userId: string,
 ): ServerToolConfig<
   typeof getListings.inputSchema.shape,
   typeof getListings.outputSchema.shape
 > => {
   return {
-    callback: async ({ limit, offset, sort_on , sort_order, includes }) => {
+    callback: async ({ limit, offset, sort_on, sort_order, includes }) => {
       try {
         const shop = await etsy.Shop.getShopByOwnerUserId(Number(userId));
 

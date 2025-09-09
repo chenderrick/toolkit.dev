@@ -34,8 +34,14 @@ export const etsyToolkitServer = createServerToolkit(
     });
 
     return {
-      [EtsyTools.getListings]: getListingsServerConfig(etsy, account.providerAccountId),
-      [EtsyTools.createDraftListing]: createDraftListingServerConfig(etsy, account.providerAccountId)
+      [EtsyTools.getListings]: getListingsServerConfig(
+        etsy,
+        account.providerAccountId,
+      ),
+      [EtsyTools.createDraftListing]: createDraftListingServerConfig(
+        etsy,
+        account.providerAccountId,
+      ),
     };
   },
 );

@@ -12,10 +12,10 @@ export const createDraftListingClientConfig: ClientToolConfig<
       {isPartial && <span className="animate-pulse">...</span>}
     </div>
   ),
-  ResultComponent: ({ result: { result } }) =>
+  ResultComponent: ({ result: { result } }) => (
     <div className="space-y-2">
       <h2 className="text-lg font-bold">Listing</h2>
-        <div key={result.listing_id}>{result.title}</div>
-      )
+      <div key={result.listing_id}>{result.title}</div>)
     </div>
+  ),
 };
