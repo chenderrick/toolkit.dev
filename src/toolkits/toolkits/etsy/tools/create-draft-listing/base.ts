@@ -44,10 +44,10 @@ export const createDraftListing = createBaseTool({
       .max(1000)
       .describe("The description of the listing."),
     price: z
-      .string()
-      .regex(/^\d+(\.\d{1,2})?$/)
+      .number()
+      .positive()
       .describe(
-        "The price of the item as a string in the format \"0.00\". Must be a positive value with up to two decimal places."
+        "The price of the item. Must be a positive value with up to two decimal places."
       ),
     quantity: z
       .number()
@@ -146,7 +146,7 @@ export const createDraftListing = createBaseTool({
       .array(
         z
           .string()
-          .regex(/[^\\p{L}\p{Nd}\p{Zs}-'™©®]/u, {
+          .regex(/^[\p{L}\p{Nd}\p{Zs}'™©®-]+$/u, {
             message:
               "Valid tag strings contain only letters, numbers, whitespace characters, -, ', ™, ©, and ®.",
           })
@@ -256,7 +256,7 @@ export const createDraftListing = createBaseTool({
       .optional()
       .describe("When true, applicable shop tax rates apply to this listing at checkout"),
     type: z
-      .enum(["physical", "digital", "both"])
+      .enum(["physical", "download", "both"])
       .describe("An enumerated type string that indicates whether the listing is physical or a digital download or both."),
   }),
   outputSchema: z.object({

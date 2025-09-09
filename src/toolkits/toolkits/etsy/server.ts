@@ -10,6 +10,7 @@ import { EtsyTools } from "./tools/tools";
 import { EtsySecurityDataStorage } from "./security-data-storage";
 
 import { getListingsServerConfig } from "@/toolkits/toolkits/etsy/tools/get-listings/server";
+import { createDraftListingServerConfig } from "@/toolkits/toolkits/etsy/tools/create-draft-listing/server";
 
 export const etsyToolkitServer = createServerToolkit(
   baseEtsyToolkitConfig,
@@ -33,7 +34,8 @@ export const etsyToolkitServer = createServerToolkit(
     });
 
     return {
-      [EtsyTools.getListings]: getListingsServerConfig(etsy),
+      [EtsyTools.getListings]: getListingsServerConfig(etsy, account.providerAccountId),
+      [EtsyTools.createDraftListing]: createDraftListingServerConfig(etsy, account.providerAccountId)
     };
   },
 );

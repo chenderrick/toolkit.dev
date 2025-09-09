@@ -10,6 +10,8 @@ import { createClientToolkit } from "@/toolkits/create-toolkit";
 
 import { getListingsClientConfig } from "@/toolkits/toolkits/etsy/tools/get-listings/client";
 
+import { createDraftListingClientConfig } from "@/toolkits/toolkits/etsy/tools/create-draft-listing/client";
+
 import { ToolkitGroups } from "@/toolkits/types";
 import { EtsyTools } from "./tools/tools";
 
@@ -37,5 +39,6 @@ export const etsyClientToolkit = createClientToolkit(
   },
   {
     [EtsyTools.getListings]: getListingsClientConfig,
+    [EtsyTools.createDraftListing]: createDraftListingClientConfig,
   },
 );
