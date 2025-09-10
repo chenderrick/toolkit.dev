@@ -63,7 +63,7 @@ export const createDraftListing = createBaseTool({
     when_made: z
       .enum([
         "made_to_order",
-        "2020_2023",
+        "2020_2025",
         "2010_2019",
         "2006_2009",
         "before_2006",

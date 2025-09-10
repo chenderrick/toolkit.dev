@@ -96,11 +96,12 @@ export const createDraftListingServerConfig = (
           ...(is_customizable !== undefined ? { is_customizable } : {}),
           ...(should_auto_renew !== undefined ? { should_auto_renew } : {}),
           ...(is_taxable !== undefined ? { is_taxable } : {}),
+          ...(tags !== undefined ? { tags } : {}),
           ...(type !== undefined ? { type } : {}),
         };
 
         const listing = await etsy.ShopListing.createDraftListing(
-          shopId,
+          {shopId},
           params,
           undefined,
         );
