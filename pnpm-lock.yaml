@@ -4,7 +4,7 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
+patchedDependencies: 
   etsy-ts@4.2.0:
     hash: 1b38e33f32486e10e0a008fd3505d112c6ba6a828a3227ca85c9f2be552d2c1e
     path: patches/etsy-ts@4.2.0.patch
