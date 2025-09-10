@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  etsy-ts@4.2.0:
+    hash: 1b38e33f32486e10e0a008fd3505d112c6ba6a828a3227ca85c9f2be552d2c1e
+    path: patches/etsy-ts@4.2.0.patch
+
 importers:
 
   .:
@@ -179,12 +184,12 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
-      etsy-ts:
-        specifier: ^4.2.0
-        version: 4.2.0
       discord-api-types:
         specifier: ^0.38.17
         version: 0.38.18
+      etsy-ts:
+        specifier: ^4.2.0
+        version: 4.2.0(patch_hash=1b38e33f32486e10e0a008fd3505d112c6ba6a828a3227ca85c9f2be552d2c1e)
       exa-js:
         specifier: ^1.8.8
         version: 1.8.8(encoding@0.1.13)(ws@8.18.3)(zod@3.25.56)
@@ -8670,7 +8675,7 @@ snapshots:
 
   etag@1.8.1: {}
 
-  etsy-ts@4.2.0:
+  etsy-ts@4.2.0(patch_hash=1b38e33f32486e10e0a008fd3505d112c6ba6a828a3227ca85c9f2be552d2c1e):
     dependencies:
       axios: 1.7.7
       axios-auth-refresh: 3.3.6(axios@1.7.7)
