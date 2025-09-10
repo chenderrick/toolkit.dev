@@ -15,8 +15,8 @@ import { createDraftListingServerConfig } from "@/toolkits/toolkits/etsy/tools/c
 export const etsyToolkitServer = createServerToolkit(
   baseEtsyToolkitConfig,
   "You have access to the Etsy toolkit for general account management. Currently, this toolkit provides:\n" +
-  "- **Get Listings By Shop**: Retrieves listings associated with the shop owned by authenticated user. Has the ability to fetch associations relating to each listing as well.\n" +
-  "- **Create Draft Listing**: Creates a new draft listing in the shop owned by authenticated user. Accepts a variety of inputs to assign to listing.\n",
+    "- **Get Listings By Shop**: Retrieves listings associated with the shop owned by authenticated user. Has the ability to fetch associations relating to each listing as well.\n" +
+    "- **Create Draft Listing**: Creates a new draft listing in the shop owned by authenticated user. Accepts a variety of inputs to assign to listing.\n",
   async () => {
     const account = await api.accounts.getAccountByProvider("etsy");
 
