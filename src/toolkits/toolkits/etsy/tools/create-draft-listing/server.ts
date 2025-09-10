@@ -101,7 +101,7 @@ export const createDraftListingServerConfig = (
         };
 
         const listing = await etsy.ShopListing.createDraftListing(
-          {shopId},
+          { shopId },
           params,
           undefined,
         );
