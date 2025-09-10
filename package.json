@@ -140,6 +140,9 @@
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
   },
+  "patchedDependencies": {
+    "etsy-ts@4.2.0": "patches/etsy-ts@4.2.0.patch"
+  },
   "ct3aMetadata": {
     "initVersion": "7.39.3"
   },
